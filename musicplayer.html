@@ -1,0 +1,100 @@
+<html>
+<head>
+<style>
+  body {
+ background-image: url("backdrop.png");
+  background-size: cover;      /* Forces image to fill the screen */
+  background-repeat: no-repeat; /* Prevents tiling */
+  background-position: center; /* Centers the image */
+  background-attachment: fixed; /* Keeps background from scrolling with content */
+  
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: 100vh;
+  margin: 0;
+  font-family: sans-serif;
+  }
+
+  .vinyl-container {
+    text-align: center;
+  }
+
+  img {
+    width: 90%; 
+    border-radius: 50%;
+  }
+
+  @keyframes rotate {
+    from { transform: rotate(0deg); }
+    to { transform: rotate(360deg); }
+  }
+
+  .rotating {
+    animation: rotate 4s linear infinite;
+  }
+
+  button {
+    padding: 30px 90px;
+    font-size: 25px;
+    cursor: pointer;
+    background-color: #fff5e9;
+    color: a22727;
+    border: none;
+	margin:20px;
+    border-radius: 30px;
+    transition: background 0.3s;
+  }
+
+  button:hover {
+    background-color: #fff5e9;
+  }
+</style>
+</head>
+<body>
+
+  <div class="vinyl-container">
+    <img id="vinylImage" src="vinyl.png" alt="Vinyl Record">
+    <br>
+    <button id="playBtn" onclick="toggleMusic()">▶ Play Bohemian Rhapsody</button><br>
+	<iframe data-testid="embed-iframe" style="border-radius:12px; margin:10px;" src="https://open.spotify.com/embed/playlist/1kNn9o0fplZH7DnVlEZg7C?utm_source=generator" width="100%" height="402" frameBorder="0" allowfullscreen="" allow="autoplay; clipboard-write; encrypted-media; fullscreen; picture-in-picture" loading="lazy"></iframe>
+
+  </div>
+  
+  <audio id="rhapsody">
+    <source src="BR.mp3" type="audio/mpeg">
+    Your browser does not support the audio element.
+  </audio>
+
+  <script>
+    const song = document.getElementById("rhapsody");
+    const vinyl = document.getElementById("vinylImage");
+    const btn = document.getElementById("playBtn");
+
+    function toggleMusic() {
+      if (song.paused) {
+        // If the song is at the very beginning (0), jump to 5 seconds
+        if (song.currentTime === 0) {
+          song.currentTime = 8.2;
+        }
+        
+        song.play();
+        vinyl.classList.add("rotating");
+        btn.innerHTML = "⏸ Pause";
+      } else {
+        song.pause();
+        vinyl.classList.remove("rotating");
+        btn.innerHTML = "▶ Play Bohemian Rhapsody";
+      }
+    }
+    
+    song.onended = function() {
+      vinyl.classList.remove("rotating");
+      btn.innerHTML = "▶ Play Bohemian Rhapsody";
+      song.currentTime = 0; // Reset to start when finished
+    };
+  </script>
+
+</body>
+</html>

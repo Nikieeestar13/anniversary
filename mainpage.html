@@ -1,0 +1,260 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap" rel="stylesheet">
+
+    <style>
+        :root {
+            --door-width: 300px;
+            --door-height: 800px;
+            --anim-speed: 1.5s;
+        }
+
+        @media (max-width: 600px) {
+            :root {
+                --door-width: 50vw;
+                --door-height: 80vh;
+            }
+        }
+
+        body, html {
+            margin: 0;
+            padding: 0;
+            width: 100%;
+            height: 100%;
+			background-color: #a22727;
+            background-size: contain;
+            font-family: 'Segoe UI', sans-serif;
+            -webkit-tap-highlight-color: transparent;
+            overflow: hidden; 
+        }
+
+        .perspective-container {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            perspective: 1200px;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            z-index: 100;
+        }
+
+        .door-frame {
+            position: relative;
+            width: calc(var(--door-width) * 2);
+            height: var(--door-height);
+            transform-style: preserve-3d;
+            cursor: pointer;
+        }
+
+        .door {
+            position: absolute;
+            width: var(--door-width);
+            height: var(--door-height);
+            background-size: 100% 100%;
+            background-repeat: no-repeat;
+            z-index: 2;
+            transition: transform var(--anim-speed) cubic-bezier(0.4, 0, 0.2, 1), opacity 5s ease;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.5);
+        }
+		.second, .forth, .fifth, .sixth, .seven{
+			padding:10px;
+			width: 100%;
+            font-family: 'Corinthia', cursive;
+			font-size: 30px;
+			background-color: #a22727;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+		}
+		
+		.content-wrap {
+			max-width: 800px;
+			margin: 0 auto;
+			text-align: center;
+			color: #333;
+			position: relative;
+		}
+
+		/* Change fixed to relative so it occupies space in the scroll flow */
+		#bg-video {
+			width: 100%;
+			height: auto;
+			max-height: 100vh; /* Keeps it from being too tall */
+			display: block;
+			object-fit: cover;
+			background-color: #000;
+		}
+
+        .left-door { left: 0; background-image: url('doorlefthalf.png'); transform-origin: left; }
+        .right-door { right: 0; background-image: url('doorrighthalf.png'); transform-origin: right; }
+
+        .open .left-door { transform: rotateY(-140deg); opacity: 0; }
+        .open .right-door { transform: rotateY(140deg); opacity: 0; }
+        .open .door-frame { transform: scale(3); pointer-events: none; }
+
+        /* --- CONTENT PAGE --- */
+        .card-page {
+			position: fixed;
+			top: 0;
+			left: 0;
+			width: 100%;
+			height: 100%;
+			background-color: #fff5e9;
+			z-index: 1;
+			opacity: 0;
+			visibility: hidden;
+			overflow-y: auto; /* This enables the scrollbar */
+			transition: opacity 1s ease-in-out;
+			box-sizing: border-box;
+		}
+        .reveal-page .card-page { opacity: 1; visibility: visible; }
+        body.scroll-ready { overflow: auto; }
+        .content-wrap { max-width: 800px; margin: 0 auto; text-align: center; color: #333; }
+
+       
+
+        @keyframes fall {
+            0% { transform: translateY(0) rotate(0deg); opacity: 0; }
+            10% { opacity: 0.8; }
+            90% { opacity: 0.8; }
+            100% { transform: translateY(110vh) rotate(720deg); opacity: 0; }
+        }
+    </style>
+</head>
+<body>
+
+    <div class="perspective-container" id="doorsContainer">
+        <div class="door-frame" id="doorWrapper">
+            <div class="door left-door"></div>
+            <div class="door right-door"></div>
+        </div>
+    </div>
+
+		   <div class="card-page" id="mainContent">
+			
+			<div class="content-wrap">
+				<div class="main">
+					<video id="bg-video" autoplay muted loop playsinline>
+						<source src="Wishes.mp4" type="video/mp4">
+					</video>
+				</div>
+				
+				<div class="second">
+				<div class="L1" style="width:50%;align:center;padding:10px;">
+					<p style="color: #fff5e9;">Over a thousand days of laughter, tears, and everything in between. Three years later, 
+					and we’re just getting started</p>
+				</div>
+				
+				
+				<div class="R1" style="width:40%; align:right;">
+					<a href=poleroidwall.html><a href=clock.html><img src="clock.png" style="width: 80%;"></a>
+				</div>
+				</div>
+				<div class="third">
+					<img src="main3.jpg" style="width: 100%; display:block;">
+				</div>
+				<div class="forth">
+    
+					<div class="L1" style="width: 40%; padding: 10px; text-align: center;">
+					<a href=musicplayer.html><img src="radio.png" style="width: 90%;"></a>
+					</div>
+
+					<div class="R1" style="width: 60%; margin-right:20px;">
+						<p style="color: #fff5e9;">
+							If everything fades, I hope this song still reminds you of us.
+						</p>
+					</div>
+					
+				</div>
+				<div class="third">
+					<img src="main4.jpg" style="width: 100%; display:block;">
+				</div>
+				<div class="fifth">
+				<div class="L1" style="width:50%;align:center;padding:10px;">
+					<p style="color: #fff5e9;">A thousand beginnings, and somehow, I’d choose every one of them again...with you</p>
+				</div>
+				
+				
+				<div class="R1" style="width:40%; align:right;">
+					<a href=poleroidwall.html><img src="stamp.png" style="width: 80%;"></a>
+				</div>
+				</div>
+				<div class="third">
+					<img src="main5.jpg" style="width: 100%; display:block;">
+				</div>
+				<div class="sixth">
+				<div class="L1" style="width: 40%; padding: 10px; text-align: center;">
+					<a href=musicplayer.html><img src="jar.png" style="width: 90%;transform:rotate(-30deg)"></a>
+					</div>
+					<div class="R1" style="width: 60%; margin-right:20px;">
+						<p style="color: #fff5e9;">
+							Let's test your knowledge three years in shall we?
+						</p>
+					</div>
+					
+					
+				</div>
+				<div class="third">
+					<img src="ILU.png" style="width: 100%; display:block;">
+				</div>
+				<div class="seven">
+ 
+					<div class="L1" style="width:50%;align:center;padding:10px;">
+					<p style="color: #fff5e9;">Your yearly subscription *wink wink*</p>
+				</div>
+				
+				
+				<div class="R1" style="width:40%; align:right;">
+					<a href="https://drive.google.com/drive/folders/1CmgtLnNubR6bIo17euiNAFhOr_qtub-N"><img src="lipstick.png" style="width: 90%;transform:rotate(30deg)"></a>
+				</div>
+					
+				</div>
+				<div class="third">
+					<img src="main6.jpg" style="width: 100%; display:block;">
+				</div>
+				<div class="second">
+				<div class="L1" style="width:50%;align:center;padding:10px;">
+					<p style="color: #fff5e9;">A small note from my heart to yours</p>
+				</div>
+				
+				
+				<div class="R1" style="width:40%; align:right;">
+					<a href=poleroidwall.html><a href=clock.html><img src="envelope.png" style="width: 80%;"></a>
+				</div>
+				</div>
+				<div class="third">
+					<img src="border.png" style="width: 100%; display:block;">
+				</div>
+			</div>
+		</div>
+
+    <script>
+        const wrapper = document.getElementById('doorWrapper');
+        const container = document.getElementById('doorsContainer');
+        const body = document.body;
+        const colors = ['#ffd65e', '#ff9900', '#ffb4b4', '#ffffff']; // Petal colors
+
+        
+
+        wrapper.addEventListener('click', () => {
+            // 1. Start animations
+            wrapper.classList.add('open');
+            body.classList.add('reveal-page');
+
+
+
+            // 3. Clean up door container
+            setTimeout(() => {
+                container.style.display = 'none';
+                body.classList.add('scroll-ready');
+            }, 1500); 
+        });
+    </script>
+</body>
+</html>

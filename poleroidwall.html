@@ -1,0 +1,216 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Our Anniversary Wall</title>
+	<link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap" rel="stylesheet">
+	<link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
+    <style>
+        body {
+            margin: 0;
+            padding: 50px 20px;
+			background: url("poleroid/backpol.png");
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            min-height: 100vh;
+        }
+
+        h1 {
+            font-family: 'Corinthia', cursive;
+            color: white;
+            font-size: 3rem;
+            text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
+            margin-bottom: 40px;
+        }
+
+        .wall {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 40px;
+            max-width: 1200px;
+            perspective: 1000px;
+        }
+
+        .polaroid {
+            background: #ffffff;
+            padding: 15px 15px 45px 15px;
+            box-shadow: 5px 10px 20px rgba(0, 0, 0, 0.5);
+            text-decoration: none;
+            color: #333;
+            transition: all 0.3s ease-in-out;
+            position: relative;
+        }
+
+        /* The "Tape" effect on top of photos */
+        .polaroid::before {
+            content: "";
+            position: absolute;
+            top: -15px;
+            left: 30%;
+            width: 80px;
+            height: 30px;
+            background-color: rgba(255, 255, 255, 0.4);
+            box-shadow: 0 2px 4px rgba(0,0,0,0.1);
+            transform: rotate(-5deg);
+        }
+
+        .polaroid img {
+            width: 220px;
+            height: 220px;
+            object-fit: cover;
+            display: block;
+            border: 1px solid #eee;
+        }
+
+        .caption {
+            font-family: 'Alan Sans', cursive;
+            text-align: center;
+            font-size: 1rem;
+            padding-top: 15px;
+        }
+
+        /* Random rotation for that scattered look */
+        .polaroid:nth-child(4n+1) { transform: rotate(-4deg); }
+        .polaroid:nth-child(4n+2) { transform: rotate(3deg) translateY(-10px); }
+        .polaroid:nth-child(4n+3) { transform: rotate(-2deg) translateY(5px); }
+        .polaroid:nth-child(4n+4) { transform: rotate(5deg); }
+
+        /* Interaction: Bring to front and straighten when hovered */
+        .polaroid:hover {
+            transform: scale(1.15) rotate(0deg) !important;
+            z-index: 999;
+            box-shadow: 0 15px 30px rgba(0, 0, 0, 0.5);
+        }
+
+        /* Simple mobile adjustment */
+        @media (max-width: 600px) {
+            .polaroid img {
+                width: 160px;
+                height: 160px;
+            }
+        }
+    </style>
+</head>
+<body>
+
+    <img src=firsts.png style="width:95%;">
+
+    <div class="wall">
+        
+        <div class="polaroid">
+            <img src="poleroid/1.jpg">
+            <div class="caption">Where it started<br>First kiss</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/8.jpg">
+            <div class="caption">First date as a couple</div>
+        </div>
+        <div class="polaroid">
+            <img src="poleroid/2.jpg">
+            <div class="caption">First long bike ride</div>
+        </div>
+
+        <div class="polaroid">
+            <img src="poleroid/3.webp">
+            <div class="caption">First Goa trip</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/4.jpg">
+            <div class="caption">First time painting</div>
+        </div>
+        <div class="polaroid">
+            <img src="poleroid/5.jpg">
+            <div class="caption">First Kodai trip</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/6.jpg">
+            <div class="caption">First public holiday<br>together</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/7.jpg">
+            <div class="caption">First Arcade Day</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/9.jpg">
+            <div class="caption">First shopping spree</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/10.jpg">
+            <div class="caption">First Safari</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/11.jpg">
+            <div class="caption">First Wedding Together</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/12.jpg">
+            <div class="caption">First Valentine's Day</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/13.jpg">
+            <div class="caption">First your birthday</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/14.jpg">
+            <div class="caption">First Iftar together</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/15.jpg">
+            <div class="caption">First Hyderabadh<br>together</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/16.jpg">
+            <div class="caption">First my birthday<br>together</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/17.jpg">
+            <div class="caption">First giant wheel</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/18.jpg">
+            <div class="caption">First time exploring<br>South Goa</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/19.jpg">
+            <div class="caption">First random hotel<br>getaway</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/20.jpg">
+            <div class="caption">First Orchestra</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/21.jpg">
+            <div class="caption">First Christmas hosting</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/22.jpg">
+            <div class="caption">First Poleroids</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/23.jpg">
+            <div class="caption">First blanket fort</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/24.jpg">
+            <div class="caption">First IKEA</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/25.jpg">
+            <div class="caption">First rain pakoda making</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/26.jpg">
+            <div class="caption">First hospital trip for<br>a specific reason</div>
+        </div>
+		<div class="polaroid">
+            <img src="poleroid/27.jpg">
+            <div class="caption">This is a cute pic</div>
+        </div>
+
+    </div>
+
+</body>
+</html>

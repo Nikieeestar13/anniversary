@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<link href="https://fonts.googleapis.com/css2?family=Corinthia:wght@400;700&display=swap" rel="stylesheet">
+	
+	<link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
+    <title>Our Time Together</title>
+    <style>
+        body {
+            font-family: 'Helvetica Neue', Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            margin: 0;
+            background-image: url("pink.png");
+			background-size: cover;      /* Forces image to fill the screen */
+			background-repeat: no-repeat; /* Prevents tiling */
+			background-position: center; /* Centers the image */
+			background-attachment: fixed; /* Keeps background from scrolling with content */
+        }
+
+        .container {
+            text-align: center;
+            width: 90%;
+            max-width: 400px; /* Keeps it tight on larger screens */
+            padding: 2rem 1rem;
+            border-radius: 25px;
+            background: white;
+            box-shadow: 0 15px 35px rgba(255, 77, 109, 0.1);
+        }
+
+        h1 {
+            color: #a22727;
+            font-size: 1.5rem;
+            margin-bottom: 2rem;
+        }
+
+        /* The flex container for the boxes */
+        #clock {
+            display: flex;
+            flex-wrap: wrap; /* Allows boxes to drop to the next line */
+            justify-content: center;
+            gap: 10px;
+        }
+
+        .time-unit {
+            background: #fff0f3;
+            padding: 15px 5px;
+            border-radius: 15px;
+            /* On mobile, this makes them 2-per-row */
+            flex: 1 1 calc(50% - 20px); 
+            min-width: 100px;
+        }
+
+        #clock span:first-child {
+            display: block;
+            font-size: 1.8rem;
+            font-weight: bold;
+            color: #a22727;
+        }
+
+        .label {
+            display: block;
+            font-size: 0.75rem;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: #a38087;
+            margin-top: 5px;
+        }
+
+        /* Adjustments for very small phones */
+        @media (max-width: 350px) {
+            h1 { font-size: 1.2rem; }
+            #clock span:first-child { font-size: 1.4rem; }
+        }
+    </style>
+</head>
+<body>
+<div class="container">
+	<img src=bow.png style="width:30%;">
+    <h1 style="font-family: Alan Sans;">We've been together for</h1>
+    <div id="clock" style="font-family: Alan Sans;">
+        <div class="time-unit"><span id="days">0</span><span class="label" >Days</span></div>
+        <div class="time-unit"><span id="hours">0</span><span class="label">Hours</span></div>
+        <div class="time-unit"><span id="minutes">0</span><span class="label">Minutes</span></div>
+        <div class="time-unit"><span id="seconds">0</span><span class="label">Seconds</span></div>
+    </div>
+</div>
+
+<script>
+    // EDIT YOUR DATE HERE (Year, Month Index 0-11, Day, Hour, Minute)
+    // Example: Jan 15, 2024 at 6:30 PM
+    const startDate = new Date(2023, 4, 22, 01, 30); 
+
+    function updateClock() {
+        const now = new Date();
+        const diff = now - startDate;
+
+        if (diff < 0) {
+            document.querySelector('.container').innerHTML = "<h1>The countdown begins!</h1>";
+            return;
+        }
+
+        const days = Math.floor(diff / (1000 * 60 * 60 * 24));
+        const hours = Math.floor((diff / (1000 * 60 * 60)) % 24);
+        const minutes = Math.floor((diff / (1000 * 60)) % 60);
+        const seconds = Math.floor((diff / 1000) % 60);
+
+        document.getElementById('days').innerText = days;
+        document.getElementById('hours').innerText = hours;
+        document.getElementById('minutes').innerText = minutes;
+        document.getElementById('seconds').innerText = seconds;
+    }
+
+    setInterval(updateClock, 1000);
+    updateClock();
+</script>
+
+</body>
+</html>
